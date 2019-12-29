@@ -2,10 +2,11 @@
  * @Author: Ali
  * @Date:   2019-12-26T22:22:15+01:00
  * @Last modified by:   Ali
- * @Last modified time: 2019-12-29T13:48:49+01:00
+ * @Last modified time: 2019-12-29T15:19:18+01:00
  */
 import React,{Component} from 'react'
 import Square from './Square'
+import CheckWin from './CheckWin'
 import './Game.css'
 class Game extends Component {
   constructor(){
@@ -16,7 +17,6 @@ class Game extends Component {
     }
   }
   handleClick = index => {
-    console.log(index);
     if(this.state.board[index] === null){
       if(this.state.currentTurn === "X"){
         let newBoard = this.state.board
@@ -35,13 +35,21 @@ class Game extends Component {
       }
     }
   }
+  renderCells = () => {
+    return (
+      this.state.board.map((cell,index) => {
+        return <Square
+         onClick={()=>this.handleClick(index)}
+         key={index}
+         value={cell} />
+        })
+    )}
   render(){
     console.log(this.state.board);
     return (
       <div className="board">
-        {this.state.board.map((cell,index)=>{
-          return <Square onClick={()=>this.handleClick(index)} key={index}/>
-        })}
+        {this.renderCells()}
+        <CheckWin board={this.state.board}/>
       </div>
     )
   }
