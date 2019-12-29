@@ -1,0 +1,14 @@
+/**
+ * @Author: Ali
+ * @Date:   2019-12-29T13:47:41+01:00
+ * @Last modified by:   Ali
+ * @Last modified time: 2019-12-29T13:53:02+01:00
+ */
+.board {
+  margin: auto;
+  height: 80vh;
+  width:80vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+  grid-template-rows: 1fr 1fr 1fr;
+}

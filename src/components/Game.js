@@ -2,11 +2,11 @@
  * @Author: Ali
  * @Date:   2019-12-26T22:22:15+01:00
  * @Last modified by:   Ali
- * @Last modified time: 2019-12-29T13:45:27+01:00
+ * @Last modified time: 2019-12-29T13:48:49+01:00
  */
 import React,{Component} from 'react'
 import Square from './Square'
-
+import './Game.css'
 class Game extends Component {
   constructor(){
     super()
