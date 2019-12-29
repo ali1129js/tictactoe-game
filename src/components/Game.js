@@ -2,7 +2,7 @@
  * @Author: Ali
  * @Date:   2019-12-26T22:22:15+01:00
  * @Last modified by:   Ali
- * @Last modified time: 2019-12-29T13:40:56+01:00
+ * @Last modified time: 2019-12-29T13:45:27+01:00
  */
 import React,{Component} from 'react'
 import Square from './Square'
@@ -26,13 +26,17 @@ class Game extends Component {
           board:newBoard
          })
       } else {
+        let newBoard = this.state.board
+        newBoard[index] = this.state.currentTurn
         this.setState({
-         currentTurn:"X"
+         currentTurn:"X",
+         board:newBoard
         })
       }
     }
   }
   render(){
+    console.log(this.state.board);
     return (
       <div className="board">
         {this.state.board.map((cell,index)=>{
