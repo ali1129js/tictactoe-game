@@ -2,14 +2,44 @@
  * @Author: Ali
  * @Date:   2019-12-26T22:22:15+01:00
  * @Last modified by:   Ali
- * @Last modified time: 2019-12-26T22:24:35+01:00
+ * @Last modified time: 2019-12-29T13:40:56+01:00
  */
-import React from 'react'
+import React,{Component} from 'react'
 import Square from './Square'
-const Game = () => (
-  <div className="">
-  <Square />
-   </div>
-)
 
+class Game extends Component {
+  constructor(){
+    super()
+    this.state = {
+      board:Array(9).fill(null),
+      currentTurn:"X"
+    }
+  }
+  handleClick = index => {
+    console.log(index);
+    if(this.state.board[index] === null){
+      if(this.state.currentTurn === "X"){
+        let newBoard = this.state.board
+        newBoard[index] = this.state.currentTurn
+        this.setState({
+          currentTurn:"O",
+          board:newBoard
+         })
+      } else {
+        this.setState({
+         currentTurn:"X"
+        })
+      }
+    }
+  }
+  render(){
+    return (
+      <div className="board">
+        {this.state.board.map((cell,index)=>{
+          return <Square onClick={()=>this.handleClick(index)} key={index}/>
+        })}
+      </div>
+    )
+  }
+}
 export default Game
